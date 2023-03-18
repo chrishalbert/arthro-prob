@@ -9,7 +9,7 @@
     "autoload": {
         "psr-4": {
             "ArthroProb\\": "src",
-            "ArhtroProbTests\\": "tests"
+            "ArthroProbTests\\": "tests"
         }   
     }
 }
