@@ -1,0 +1,15 @@
+{
+    "name": "chrishalbert/arthro-prob",
+    "authors": [
+        {
+            "name": "Chris Halbert",
+            "email": "christopher.halbert@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ArthroProb\\": "src",
+            "ArhtroProbTests\\": "tests"
+        }   
+    }
+}

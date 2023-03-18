@@ -1,0 +1,6 @@
+vendor
+.git
+composer.phar
+
+*.sw*
+
