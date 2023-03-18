@@ -28,9 +28,9 @@ abstract class BaseTest
     protected function assert($expected, $actual, $description = '')
     {
         if ($expected !== $actual) {
-            echo PHP_EOL . "  FAILED: " . debug_backtrace()[1]['function'];
-            echo PHP_EOL . "    Expected: `" . (string)$expected . "`";
-            echo PHP_EOL . "    Actual:   `" . (string)$actual . "`";
+            echo PHP_EOL . "  FAILED: " . debug_backtrace()[1]['function'] . ' ' . $description;
+            echo PHP_EOL . "    Expected: `" . strval($expected) . "`";
+            echo PHP_EOL . "    Actual:   `" . strval($actual) . "`";
         } else {
             echo PHP_EOL . "  passed: " . debug_backtrace()[1]['function'];
         }

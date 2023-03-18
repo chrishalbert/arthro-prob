@@ -31,7 +31,7 @@ class InsectParameterTest extends BaseTest
 
     public function testGetDescriptionOutput()
     {
-        $this->assert('Current insects with defined behavior: ant,', $this->insectParameter->getDescription());
+        $this->assert('Current insects with defined behavior: ant', $this->insectParameter->getDescription());
     }
 
     protected function setUp()

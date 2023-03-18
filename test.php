@@ -5,9 +5,13 @@ ini_set('display_errors', 1);
 require_once("./vendor/autoload.php");
 
 use ArthroProbTests\Console\InsectParameterTest;
+use ArthroProbTests\Console\TimeParameterTest;
 
 $tests = [
-    new InsectParameterTest()
+    new InsectParameterTest(),
+    new TimeParameterTest(),
+    // new BoardParameterTest(),
+    // new EndProbabilityTest()
 ];
 
 echo PHP_EOL . "Running tests..." . PHP_EOL;
