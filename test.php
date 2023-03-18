@@ -4,13 +4,12 @@ ini_set('display_errors', 1);
 
 require_once("./vendor/autoload.php");
 
-use ArthroProbTests\Console\InsectParameterTest;
-use ArthroProbTests\Console\TimeParameterTest;
+use ArthroProbTests\Console\{InsectParameterTest,TimeParameterTest,BoardParameterTest};
 
 $tests = [
     new InsectParameterTest(),
     new TimeParameterTest(),
-    // new BoardParameterTest(),
+    new BoardParameterTest(),
     // new EndProbabilityTest()
 ];
 
