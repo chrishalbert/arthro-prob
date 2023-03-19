@@ -5,11 +5,11 @@ namespace ArthroProb\Models\Simulation;
 abstract class Board implements BoardInterface
 {
     protected array $positions;
-
     protected int $xStart;
     protected int $xEnd;
     protected int $yStart;
     protected int $yEnd;
+    protected string $boardName;
     
     /**
      * Creates a board ranging from xStart..xEnd and yStart..yEnd.
@@ -18,12 +18,13 @@ abstract class Board implements BoardInterface
      * @param int $yStart
      * @param int $yEnd
      */
-    public function __construct(int $xStart, int $xEnd, int $yStart, int $yEnd)
+    public function __construct(int $xStart, int $xEnd, int $yStart, int $yEnd, string $boardName)
     {
         $this->xStart = $xStart;
         $this->xEnd = $xEnd;
         $this->yStart = $yStart;
         $this->yEnd = $yEnd;
+        $this->boardName = $boardName;
 
         $this->positions = $this->createPositions();   
     }
@@ -33,13 +34,13 @@ abstract class Board implements BoardInterface
         $positions = [];
         for ($x = $this->xStart; $x <= $this->xEnd; $x++) {
             for ($y = $this->yStart; $y <= $this->yEnd; $y++) {
-                $positions[] = new BoardPosition($x,$y);
+                $positions["{$x}:{$y}"] = new BoardPosition($x,$y);
             }    
         }
         return $positions;   
     }
 
-    /**
+    /**d
      * @inheritDoc
      */
     public function getEmptyBoard(): self
@@ -48,17 +49,11 @@ abstract class Board implements BoardInterface
     }
 
     /**
-     * Not efficient. Should use a hash map or refactor.
      * @inheritDoc
      */
     public function includes(BoardPosition $position): bool
     {
-        foreach ($this->positions as $boardPosition) {
-            if ($position->getX() === $boardPosition->getX() && $position->getY() === $boardPosition->getY()) {
-                return true;
-            }
-        }
-        return false;
+        return isset($this->positions["{$position->getX()}:{$position->getY()}"]);
     }
 
     /**
@@ -67,5 +62,23 @@ abstract class Board implements BoardInterface
     public function getPositions(): array
     {
         return $this->positions;
+    }
+
+    /**
+     * 
+     */
+    public function getPositionByCoord(int $x, int $y)
+    {
+        return $this->positions["{$x}:{$y}"] ?? null;
+    }
+
+    public function set(int $x, int $y, $probability)
+    {
+        $this->positions["{$x}:{$y}"]->setProbability($probability);
+    }
+
+    public function getName()
+    {
+        return $this->boardName;
     }
 }

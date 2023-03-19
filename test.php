@@ -5,14 +5,15 @@ ini_set('display_errors', 1);
 require_once("./vendor/autoload.php");
 
 use ArthroProbTests\Console\{InsectParameterTest,TimeParameterTest,BoardParameterTest,EndProbabilityTest};
-use ArthroProbTests\Models\Simulation\FiveByFiveTest;
+use ArthroProbTests\Models\Simulation\{FiveByFiveTest, RoundTest};
 
 $tests = [
     new InsectParameterTest(),
     new TimeParameterTest(),
     new BoardParameterTest(),
     new EndProbabilityTest(),
-    new FiveByFiveTest()
+    new FiveByFiveTest(),
+    new RoundTest(),
 ];
 
 echo PHP_EOL . "Running tests..." . PHP_EOL;

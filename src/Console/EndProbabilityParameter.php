@@ -27,7 +27,7 @@ class EndProbabilityParameter extends AbstractParameter
 
     public function sanitize($value): mixed
     {
-        if (!$this->validate()) {
+        if (!$this->validate($value)) {
             throw new \Exception('End Probability failed validation.');
         }
         return json_decode($value);

@@ -2,6 +2,8 @@
 
 namespace ArthroProb\Models\Simulation;
 
+use ArthroProb\Models\Arthropods\Move;
+
 class BoardPosition
 {
     protected int $x;
@@ -17,7 +19,7 @@ class BoardPosition
 
     public function plus(Move $move)
     {
-        return new static($this->x+$move->horizontally(), $this->$y + $move->vertically());
+        return new static($this->x+$move->horizontally(), $this->y + $move->vertically());
     }
     
     public function getX()
@@ -38,5 +40,15 @@ class BoardPosition
     public function addProbability($probability)
     {
         $this->probability += $probability;
+    }
+
+    public function setProbability($probability)
+    {
+        $this->probability = $probability;
+    }
+
+    public function __toString()
+    {
+        return "[{$this->getX()}, {$this->getY()}] Probability: {$this->getProbability()} %";
     }
 }
