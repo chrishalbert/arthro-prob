@@ -32,7 +32,9 @@ echo PHP_EOL . "RESULTS: {$round} for {$parameterService->getRaw()['time']}" . P
 foreach ($parameters['endProbability'] as $coords)
 {
     $position = $round->getBoard()->getPositionByCoord($coords[0], $coords[1]);
+    $total += $position->getProbability();
     echo "  " . $position . PHP_EOL;
 }
+echo PHP_EOL . "TOTAL PROBABILITY: {$total} %" . PHP_EOL;
 
 

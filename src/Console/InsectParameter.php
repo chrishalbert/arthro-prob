@@ -5,7 +5,7 @@ namespace ArthroProb\Console;
 class InsectParameter extends AbstractParameter
 {
     protected string $name = 'insect';
-    protected array $types = ['ant'];
+    protected array $types = ['ant', 'beetle'];
     protected bool $hasDefault = true;
     protected $default = 'ant';
 

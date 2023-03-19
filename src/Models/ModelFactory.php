@@ -4,6 +4,7 @@ namespace ArthroProb\Models;
 
 use ArthroProb\Models\Arthropods\ArthropodInterface;
 use ArthroProb\Models\Arthropods\Ant;
+use ArthroProb\Models\Arthropods\Beetle;
 use ArthroProb\Models\Simulation\BoardInterface;
 use ArthroProb\Models\Simulation\FiveByFive;
 
@@ -13,6 +14,9 @@ class ModelFactory {
     {
         $insect = null;
         switch ($arthropod) {
+            case 'beetle':
+                $insect = new Beetle();
+                break;
             case 'ant':
             default:
                 $insect = new Ant();

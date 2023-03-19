@@ -9,3 +9,15 @@ composer.phar:
 
 test:
 	@php ./test.php
+
+antOnCenter15s:
+	@php disect-probability.php --insect=ant --board=FiveByFive --time=15s --endProbability="[[3,3]]"
+
+antOnBorder1h:
+	@php disect-probability.php --insect=ant --board=FiveByFive --time=1h --endProbability="[[1,1],[1,2],[1,3],[1,4],[1,5],[2,1],[3,1],[4,1],[5,1],[5,2],[5,3],[5,4],[5,5],[4,5],[3,5],[2,5]]"
+
+beetleOnCenter15s:
+	@php disect-probability.php --insect=beetle --board=FiveByFive --time=15s --endProbability="[[3,3]]"
+
+beetleOnBorder1h:
+	@php disect-probability.php --insect=beetle --board=FiveByFive --time=1h --endProbability="[[1,1],[1,2],[1,3],[1,4],[1,5],[2,1],[3,1],[4,1],[5,1],[5,2],[5,3],[5,4],[5,5],[4,5],[3,5],[2,5]]"
