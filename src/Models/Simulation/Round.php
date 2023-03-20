@@ -7,16 +7,27 @@ use ArthroProb\Models\Arthropods\Arthropod;
 
 class Round
 {
-    public function __construct(Arthropod $insect, Board $board, int $time)
+    public function __construct(Arthropod $insect, Board $board, int $time, int $visualizationMs = null)
     {
         $this->insect = $insect;
         $this->board = $board;
         $this->time = $time;
+        $this->visualizationMs = $visualizationMs;
     }
 
     public function run()
     {
         $insectMoves = $this->insect->getPossibilities();
+
+        // Used for the visualization if desired
+        $backBuffer = '';
+        if ($this->visualizationMs !== null) {
+            for ($k = 0; $k <= $this->board->getDimensions()['y']; $k++) {
+                echo PHP_EOL;
+                $backBuffer .= "\033[F";
+            }
+            echo "\r{$backBuffer}{$this->board->getVisualization()}";
+        }
 
         for ($i = 0; $i < $this->time; $i++) {
             $tempBoard = $this->board->getEmptyBoard();
@@ -43,6 +54,11 @@ class Round
                 $position->addProbability($probability*-1);
             }
             $this->board = clone $tempBoard;
+
+            if ($this->visualizationMs !== null) {
+                usleep($this->visualizationMs * 1000);  
+                echo "\r{$backBuffer}{$this->board->getVisualization()}";
+            }
         }
     }
 

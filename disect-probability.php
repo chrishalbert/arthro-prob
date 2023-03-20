@@ -3,7 +3,7 @@
 require_once("./vendor/autoload.php");
 
 use ArthroProb\Services\ParameterService;
-use ArthroProb\Console\{InsectParameter,TimeParameter,BoardParameter,EndProbabilityParameter};
+use ArthroProb\Console\{InsectParameter,TimeParameter,BoardParameter,EndProbabilityParameter,VisualizationMilliseconds};
 use ArthroProb\Models\ModelFactory;
 use ArthroProb\Models\Simulation\Round;
 
@@ -11,7 +11,8 @@ $parameterService = new ParameterService([
     new InsectParameter(),
     new TimeParameter(),
     new BoardParameter(),
-    new EndProbabilityParameter()
+    new EndProbabilityParameter(),
+    new VisualizationMilliseconds()
 ]);
 
 $parameterService->validate();
@@ -23,7 +24,7 @@ $modelFactory = new ModelFactory();
 $insect = $modelFactory->createArthropod($parameters['insect']);
 $board = $modelFactory->createBoard($parameters['board']);
 
-$round = new Round($insect, $board, $parameters['time']);
+$round = new Round($insect, $board, $parameters['time'], $parameters['visualizationMs']);
 $round->run();
 
 $total = 0;

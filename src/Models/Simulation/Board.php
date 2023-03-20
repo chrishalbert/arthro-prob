@@ -81,4 +81,24 @@ abstract class Board implements BoardInterface
     {
         return $this->boardName;
     }
+
+    public function getVisualization()
+    {
+        $visual = PHP_EOL;
+        for ($y = $this->yStart; $y <= $this->yEnd; $y++) {
+            for ($x = $this->xStart; $x <= $this->xEnd; $x++) {
+                $visual .= str_pad(round($this->positions["{$x}:{$y}"]->getProbability(), 7), 10, ' ', STR_PAD_BOTH);    
+            }
+            $visual .= PHP_EOL;
+        }
+        return $visual;
+    }
+
+    public function getDimensions()
+    {
+        return [
+            'x' => $this->xEnd - $this->xStart + 1,
+            'y' => $this->yEnd - $this->yStart + 1
+        ];
+    }
 }
