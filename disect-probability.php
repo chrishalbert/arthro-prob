@@ -24,7 +24,7 @@ $modelFactory = new ModelFactory();
 $insect = $modelFactory->createArthropod($parameters['insect']);
 $board = $modelFactory->createBoard($parameters['board']);
 
-$round = new Round($insect, $board, $parameters['time'], $parameters['visualizationMs']);
+$round = new Round($insect, $board, $parameters['time'], $parameters['visualizationMs'] ?? null);
 $round->run();
 
 $total = 0;

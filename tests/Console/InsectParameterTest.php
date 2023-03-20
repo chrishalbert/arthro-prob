@@ -21,7 +21,7 @@ class InsectParameterTest extends BaseTest
 
     public function testValidateBeetleReturnsTrue()
     {
-        $this->assert(false, $this->insectParameter->validate('beetle'));
+        $this->assert(true, $this->insectParameter->validate('beetle'));
     }
 
     public function testGetDefaultIsAnAnt()
@@ -31,7 +31,7 @@ class InsectParameterTest extends BaseTest
 
     public function testGetDescriptionOutput()
     {
-        $this->assert('Current insects with defined behavior: ant', $this->insectParameter->getDescription());
+        $this->assert('Current insects with defined behavior: ant, beetle', $this->insectParameter->getDescription());
     }
 
     protected function setUp()
